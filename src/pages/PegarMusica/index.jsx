@@ -7,7 +7,7 @@ export function PegarMusica() {
   const [datas, setdatas] = useState([])
   // const [loading, setLoading] = useState(false)
   const token =
-    "BQAw859FFmXQzShrPqzYO0N-Ofgy058eXGc3cYe-6CQkbyypiageERPFIYkYs_yBInRXEavXxcueVKVuSGw86brAgldQA37I_HxdNKK7ovrqdjKvBdo";
+    "BQDQ9d4IbSo1JU2gi3lZcE5dChGiSk6pV06edkfMynD1cRCa9Uly7MrxBK5oFWpcDEj3fn8LljG4-KhF9Gw1JREsALdIXrgQAW5v5LwiYs39DJf4C38";
 
   function handleChangeSearchValue(e){
     setdado(e.target.value);
@@ -18,7 +18,7 @@ export function PegarMusica() {
 
     // setLoading(true)
     const {data}  = await api.get(
-      `/v1/search?q=${dado}&type=album`, {
+      `/v1/search?q=${dado}&type=track`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -33,7 +33,7 @@ export function PegarMusica() {
     // }
     // ));
 
-    const dito = data.albums.items.map((item) => item)
+    const dito = data.tracks.items.map((item) => item)
 
     setdatas(dito)
     // setLoading(false)
@@ -66,10 +66,10 @@ export function PegarMusica() {
         {datas.length > 0 && (
           <ul>{datas.map((data, index)=>(
             <li key={index} style={{ "margin-top": "20px" }}>
-              <img src={data.images[0].url} alt="" style={{ "width": "200px" }}/>
-              <a href={data.artists[0].href}>link</a>
+              <img src={data.album.images[0].url} alt="" style={{ "width": "200px" }}/>
               <p>{data.name}</p>
               <p>{data.album_type}</p>
+              <button>Salvar</button>
             </li>
           ))}</ul>
         )}
