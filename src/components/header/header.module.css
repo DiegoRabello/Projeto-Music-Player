@@ -4,9 +4,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  
 }
 
-/* Estilos do contêiner à esquerda do cabeçalho */
+/* header container */
 .left-container {
   position: relative;
   display: flex;
@@ -21,7 +22,7 @@
   border-radius: 10px;
 }
 
-/* Estilos da barra de busca */
+/* Estilo da barra de busca */
 .searchBar {
   display: flex;
   align-items: center;
@@ -49,13 +50,13 @@
   transition: background-color 0.6s ease-in, transform 0.4s ease;
 }
 
-/* Efeito hover no campo de entrada */
+/* Efeito hover no input */
 .input:hover {
   background: linear-gradient(90deg, #ff9cff, #ffffff);
   transform: translateY(-3px);
 }
 
-/* Estilos do contêiner à direita do cabeçalho */
+/* Estilos do contêiner da direita */
 .right-container {
   display: flex;
   align-items: center;
@@ -175,10 +176,10 @@
   border-radius: 12px;
   padding: 16px;
   max-height: 200px;
-  transition: transform 0.4s ease;
   display: flex;
   gap: 20px;
   align-items: center;
+  transition: transform 0.4s ease;
 }
 
 /* Efeito hover no item do álbum */

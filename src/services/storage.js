@@ -10,14 +10,14 @@ export const STORAGE_SERVICE = {
     return []
 },
 
-createContact: (data) => {
+createPlaylist: (data) => {
     const storage = localStorage.getItem(DB_KEY);
-
     const songFavorite = {
         name: data.name,
         artista: data.artists[0].name,
-        audio: data.preview_url, 
-    };
+        audio: data.preview_url,
+        imagem: data.album.images[0].url
+    };  
 
     if (storage) {
         const storageParsed = JSON.parse(storage);
@@ -60,3 +60,6 @@ updateTaskState: (taskDescription) => {
     return alert('Task not found');
     }
 }
+
+
+
