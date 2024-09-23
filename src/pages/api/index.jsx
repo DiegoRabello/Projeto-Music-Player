@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export function Api() {
-  const clientID = "739eb601f95c43918a41909d9d18dcc3";
-  const clientSecret = "4bf68fed399b4d1a8565056c664186f9";
+  const clientID = "eab84205a13a4f35b18d58aa1e4f023f";
+  const clientSecret = "d6873fb3a8ca4557848314b6b391d27a";
 
   const [dado, setDado] = useState('');
   const [token, setToken] = useState('');

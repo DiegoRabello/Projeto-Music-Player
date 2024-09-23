@@ -11,32 +11,44 @@ export const STORAGE_SERVICE = {
 },
 
 createPlaylist: (data) => {
-    const storage = localStorage.getItem(DB_KEY);
-    const songFavorite = {
-        name: data.name,
-        artista: data.artists[0].name,
-        audio: data.preview_url,
-        imagem: data.album.images[0].url
-    };  
+    try {
+        const storage = localStorage.getItem(DB_KEY);
+        const songFavorite = {
+            name: data.name,
+            artista: data.artists && data.artists.length > 0 
+                ? data.artists[0].name 
+                : "Artista desconhecido",
+            audio: data.preview_url || null,
+            imagem: data.imagem 
+                
+                
+        };
 
-    if (storage) {
-        const storageParsed = JSON.parse(storage);
+        let contacts = [];
 
-        const contacts = [...storageParsed, songFavorite];
+        if (storage) {
+            try {
+                contacts = JSON.parse(storage) || [];
+            } catch (error) {
+                console.error("Erro ao parsear o storage:", error);
+            }
+        }
 
-        return localStorage.setItem(DB_KEY, JSON.stringify(contacts));
+        contacts.push(songFavorite);
+        localStorage.setItem(DB_KEY, JSON.stringify(contacts));
+        
+    } catch (error) {
+        console.error("Erro ao salvar a música na playlist:", error);
     }
-
-    return localStorage.setItem(DB_KEY, JSON.stringify([songFavorite]));
 },
-deleteContact: (contactName) => {
+deletePlaylist: (dataName) => {
     const storage = localStorage.getItem(DB_KEY);
     if (storage) {
-        const contacts = JSON.parse(storage);
-        const updatedContacts = contacts.filter(
-        (contact) => contact.name !== contactName
+        const playlist = JSON.parse(storage);
+        const updatedPlaylist = playlist.filter(
+        (playlist) => playlist.name !== dataName
       );
-      localStorage.setItem(DB_KEY, JSON.stringify(updatedContacts));
+      localStorage.setItem(DB_KEY, JSON.stringify(updatedPlaylist));
     }
 },
 
